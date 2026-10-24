@@ -1,40 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowDown, ArrowDownRight, ArrowUpRight, AtSign, BookOpen, Facebook, Github, Instagram, Linkedin, MapPin, Radio, Sparkles, X } from 'lucide-react';
+import { ArrowDown, ArrowDownRight, ArrowUpRight, AtSign, Facebook, Github, Linkedin, MapPin, Sparkles, X } from 'lucide-react';
 import './styles.css';
 
 const projects = [
   { number: '01', title: 'Dhammapada-reader', type: 'Buddhism · 2020', color: 'indigo', mark: '*.', link:'https://apkpure.com/dhammapada/com.senlasy.dhammapada' },
   { number: '02', title: 'Planetz', type: 'Space · 2021', color: 'sage', mark: '✳', link:'https://apkpure.com/planetz/com.senlasy.planetz' },
-  { number: '03', title: 'Senlasy', type: 'Social · 2026', color: 'blue', mark: 'S', link: '#' },
-];
-
-const radioTracks = [
-  { number: '01', title: 'You Belong with Me', artist: 'Taylor Swift', mood: 'COUNTRY POP · 2008', spotifyId: '1GEBsLDvJGw7kviySRI6GX' },
-  { number: '02', title: 'Too Little, Too Late', artist: 'JoJo', mood: 'POP · 2006', spotifyId: '5pS5GzrFOTiT1j4yCeYByV' },
-  { number: '03', title: 'Just the Way You Are', artist: 'Bruno Mars', mood: 'POP · 2010', spotifyId: '7BqBn9nzAq8spo5e7cZ0dJ' },
-  { number: '04', title: 'Love Yourself', artist: 'Justin Bieber', mood: 'POP · 2015', spotifyId: '50kpGaPAhYJ3sGmk6vplg0' },
-  { number: '05', title: '群青 (Gunjō)', artist: 'YOASOBI', mood: 'J-POP · 2020', spotifyId: '0T4AitQuq8IJhWBWuZwkFA' },
-  { number: '06', title: 'たぶん (Tabun)', artist: 'YOASOBI', mood: 'J-POP · 2020', spotifyId: '398dL22bDbKbAmiOnPaq7o' },
-  { number: '07', title: "Hero's Come Back!!", artist: 'nobodyknows+', mood: 'J-HIP HOP · 2007', spotifyId: '7weHG0yOwtAcZ0qBhyODLF' },
-  { number: '08', title: '猫 (Neko)', artist: 'DISH//', mood: 'J-POP · 2017', spotifyId: '6sIx7Cn37DGEhjy9hBP8Gx' },
-  { number: '09', title: '25 Minutes', artist: 'Michael Learns To Rock', mood: 'SOFT ROCK · 1993', spotifyId: '43j3MyGD3GEfYhCPTaF2is' },
+  { number: '03', title: 'Senlasy', type: 'Social · 2026', color: 'blue', mark: 'S', link: '#', current: true },
 ];
 
 function App() {
-  const [activeTrack, setActiveTrack] = useState(0);
-  const currentTrack = radioTracks[activeTrack];
-
-  function selectTrack(index) {
-    setActiveTrack(index);
-  }
-
   return (
     <main>
       <header className="topbar wrap">
         <a className="wordmark" href="#home" aria-label="Seint Seint Thu home">sst<span>®</span></a>
         <nav aria-label="Main navigation">
-          <a href="#about">About</a><a href="#stack">Tech stack</a><a href="#radio">Radio</a><a href="#reading">Reader room</a><a href="#work">Work</a><a href="#contact" className="nav-contact">Say hello <ArrowUpRight size={14} /></a>
+          <a href="#about">About</a><a href="#stack">Tech stack</a><a href="#work">Work</a><a href="#contact" className="nav-contact">Say hello <ArrowUpRight size={14} /></a>
         </nav>
       </header>
 
@@ -64,42 +45,25 @@ function App() {
 
       <section className="about section-wrap" id="about">
         <div className="section-kicker">01 / THE SHORT VERSION</div>
-        <div className="about-content"><h2>Building at<br /><em>Good Night.</em></h2><div className="about-text"><p>I have over three years of experience in app development, with a special focus on mobile apps. I enjoy turning thoughtful ideas into useful, easy-to-use experiences.</p><p>When I’m away from the screen, you’ll often find me reading a book and making room for a new perspective.</p><div className="location"><MapPin size={15} /> BASED IN YANGON, MYANMAR</div></div></div>
+        <div className="about-content"><h2>Building at<br /><em>Good Night.</em></h2><div className="about-text"><p>I have over three years of experience in app development, with a special focus on mobile apps. I enjoy turning thoughtful ideas into useful, easy-to-use experiences.</p><div className="location"><MapPin size={15} /> BASED IN YANGON, MYANMAR</div></div></div>
       </section>
 
       <section className="tech-stack section-wrap" id="stack">
         <div className="section-kicker">02 / WHAT I USE</div>
         <div className="stack-heading"><h2>Tools for<br /><em>good ideas.</em></h2><p>I build across mobile and web, choosing the right platform to bring each idea to life.</p></div>
-        <div className="stack-list" aria-label="Tech stack"><div className="stack-item"><span className="stack-number">01</span><strong>Android</strong><span className="stack-type">MOBILE</span></div><div className="stack-item"><span className="stack-number">02</span><strong>iOS</strong><span className="stack-type">MOBILE</span></div><div className="stack-item"><span className="stack-number">03</span><strong>React</strong><span className="stack-type">WEB</span></div></div>
-      </section>
-
-      <section className="radio-room section-wrap" id="radio">
-        <div className="radio-heading"><div><div className="section-kicker">03 / TUNING IN</div><h2>Seint’s <em>radio</em></h2><p>A small playlist for slow evenings, long walks, and finding a little focus.</p></div><div className="radio-badge"><Radio size={17} /><span>ON AIR</span><i /></div></div>
-        <div className="radio-layout">
-          <div className="radio-player">
-            <div className="radio-embed-heading"><span>NOW TUNING</span><a href={`https://open.spotify.com/track/${currentTrack.spotifyId}`} target="_blank" rel="noreferrer">Open in Spotify <ArrowUpRight size={13} /></a></div>
-            <iframe key={currentTrack.spotifyId} title={`${currentTrack.title} by ${currentTrack.artist} on Spotify`} src={`https://open.spotify.com/embed/track/${currentTrack.spotifyId}?utm_source=generator&theme=0`} width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />
-          </div>
-          <div className="radio-list" aria-label="Radio song list">
-            {radioTracks.map((track, index) => <button type="button" className={`radio-track${activeTrack === index ? ' is-active' : ''}`} key={track.number} onClick={() => selectTrack(index)} aria-current={activeTrack === index ? 'true' : undefined}><span className="radio-number">{track.number}</span><div className="radio-track-title"><h3>{track.title}</h3><span>{track.artist}</span></div><span className="radio-mood">{track.mood}</span><span className="radio-wave" aria-hidden="true"><i /><i /><i /><i /><i /></span></button>)}
-          </div>
+        <div className="stack-list" aria-label="Tech stack">
+          <div className="stack-item"><span className="stack-number">01</span><svg className="stack-icon android-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5a5 5 0 0 1 10 0v.5H7zM6 10h12v7a2 2 0 0 1-2 2h-1v2h-2v-2h-2v2H9v-2H8a2 2 0 0 1-2-2zm-3 1h2v6H3zm16 0h2v6h-2zM7.4 3.3l1.5 2.2m7.7-2.2-1.5 2.2" fill="currentColor" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9.5" cy="7" r=".6" fill="#0c142d"/><circle cx="14.5" cy="7" r=".6" fill="#0c142d"/></svg><strong>Android</strong><span className="stack-type">MOBILE</span></div>
+          <div className="stack-item"><span className="stack-number">02</span><svg className="stack-icon apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.8c0-2 1.6-3 1.7-3.1a3.7 3.7 0 0 0-2.9-1.6c-1.2-.1-2.4.7-3 .7s-1.5-.7-2.5-.7a3.8 3.8 0 0 0-3.2 1.9c-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2s1.3-.6 2.5-.6 1.5.6 2.5.6 1.7-1 2.3-2a9 9 0 0 0 1-2.1 3.3 3.3 0 0 1-1.8-3.1ZM14.7 6.8A3.7 3.7 0 0 0 15.6 4a3.8 3.8 0 0 0-2.5 1.3 3.4 3.4 0 0 0-.9 2.7 3.2 3.2 0 0 0 2.5-1.2Z"/></svg><strong>iOS</strong><span className="stack-type">MOBILE</span></div>
+          <div className="stack-item"><span className="stack-number">03</span><svg className="stack-icon react-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="1.8" fill="currentColor"/><g stroke="currentColor" strokeWidth="1.15"><ellipse cx="12" cy="12" rx="10" ry="3.8"/><ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)"/></g></svg><strong>React</strong><span className="stack-type">WEB</span></div>
         </div>
-        <p className="radio-note">A few songs currently in rotation <span>✳</span></p>
-      </section>
-
-      <section className="reader-room section-wrap" id="reading">
-        <div className="reader-heading"><div><div className="section-kicker">A LITTLE WONDER SPACE</div><h2>The <em>reader room</em></h2></div><BookOpen size={28} strokeWidth={1.4} aria-hidden="true" /></div>
-        <div className="reader-content"><p className="reader-intro">A corner for one of my favorite ways to spend free time: finding the ways in a good book.</p><div className="book-shelf" aria-label="Reading interests"><div className="book-spine book-one"><span>FICTION</span></div><div className="book-spine book-two"><span>IDEAS</span></div><div className="book-spine book-three"><span>CREATIVITY</span></div><div className="book-spine book-four"><span>NEW WORLDS</span></div><div className="shelf-caption">ALWAYS OPEN TO A NEW CHAPTER</div></div></div>
       </section>
 
       <section className="work section-wrap" id="work">
-        <div className="work-heading"><div><div className="section-kicker">04 / A FEW THINGS I’VE MADE</div><h2>Selected <em>work</em></h2></div><a className="text-link" href="#contact">Have something in mind? <ArrowUpRight size={15} /></a></div>
-        <div className="project-grid">{projects.map((project) => <article className="project" key={project.number}><div className={`project-art ${project.color}`}><span className="project-number">{project.number} / 03</span><span className="project-mark">{project.mark}</span><span className="project-arrow"><ArrowDownRight size={18} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><p>{project.type}</p></div><a href={project.link} target='blank'><ArrowUpRight size={17} /></a></div></article>)}</div>
+        <div className="work-heading"><div><div className="section-kicker">03 / SELECTED PROJECTS</div><h2>Selected <em>work</em></h2></div><a className="text-link" href="#contact">Have something in mind? <ArrowUpRight size={15} /></a></div>
+        <div className="project-grid">{projects.map((project) => <article className={`project${project.current ? ' is-current' : ''}`} key={project.number}><div className={`project-art ${project.color}`}><span className="project-number">{project.number} / 03</span>{project.current && <span className="project-status">CURRENT WORK</span>}<span className="project-mark">{project.mark}</span><span className="project-arrow"><ArrowDownRight size={18} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><p>{project.type}{project.current && <span className="current-label"> · IN PROGRESS</span>}</p></div><a href={project.link} target='blank' aria-label={`View ${project.title}`}><ArrowUpRight size={17} /></a></div></article>)}</div>
       </section>
 
-      <section className="note-band"><div className="note-inner"><span className="section-kicker">A SMALL NOTE</span><p>“Whatever you are,<br /><em>be a good one.</em>”</p><span className="note-attribution">— ABRAHAM LINCOLN</span><span className="note-star">✳</span></div></section>
-
-      <footer className="footer section-wrap" id="contact"><div className="section-kicker">05 / YOUR TURN</div>
+      <footer className="footer section-wrap" id="contact"><div className="section-kicker">04 / CONTACT</div>
       <div className="footer-main"><h2>Let’s make<br /><em>something good.</em></h2><a className="email-link" href="mailto: xiaoyuandevlab@gmail.com"><AtSign size={16} /> xiaoyuandevlab@gmail.com <ArrowUpRight size={18} /></a></div>
       <div className="footer-bottom">
         <a className="wordmark" href="#home">sst<span>®</span></a><span>MADE AT NIGHT · YANGON, MYANMAR</span>
